@@ -1,5 +1,20 @@
 import streamlit as st
 import pandas as pd
+from db_queries import total_supplier,total_products,total_categories
+
+# from sqlalchemy import create_engine, text
+# from urllib.parse import quote_plus
+
+# password = quote_plus("Pikachu@123")
+
+# engine = create_engine(
+#     f"mysql+pymysql://root:{password}@localhost:3306/sql_db",
+#     echo=True
+# )
+
+# with engine.connect() as conn:
+#     conn.execute(text("SELECT 1"))
+#     print("✅ Connected successfully")
 
 st.sidebar.title('Inventory Management Dashboard')
 option=st.sidebar.radio('Select Option',['Basic Operation','Operational Tasks'])
@@ -12,11 +27,11 @@ if option=='Basic Operation':
     col1,col2,col3=st.columns(3)
 # creating KPI metric grid
     with col1:
-        st.metric(label='Total Suppliers',value='--')
+        st.metric(label='Total Suppliers',value=total_supplier())
     with col2:
-        st.metric(label='Total products',value='--')
+        st.metric(label='Total products',value=total_products())
     with col3:
-        st.metric(label='Total Categories',value='--')
+        st.metric(label='Total Categories',value=total_categories())
 
 # creating col 4 to 6
     col4,col5,col6=st.columns(3)
