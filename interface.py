@@ -2,19 +2,7 @@ import streamlit as st
 import pandas as pd
 from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock
 
-# from sqlalchemy import create_engine, text
-# from urllib.parse import quote_plus
-
-# password = quote_plus("Pikachu@123")
-
-# engine = create_engine(
-#     f"mysql+pymysql://root:{password}@localhost:3306/sql_db",
-#     echo=True
-# )
-
-# with engine.connect() as conn:
-#     conn.execute(text("SELECT 1"))
-#     print("✅ Connected successfully")
+# ----------------------------------------------------- Header ----------------------------------------------------------
 
 st.sidebar.title('Inventory Management Dashboard')
 option=st.sidebar.radio('Select Option',['Basic Operation','Operational Tasks'])
