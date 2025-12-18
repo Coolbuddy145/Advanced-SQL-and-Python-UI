@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_queries import total_supplier,total_products,total_categories
+from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock
 
 # from sqlalchemy import create_engine, text
 # from urllib.parse import quote_plus
@@ -37,11 +37,11 @@ if option=='Basic Operation':
     col4,col5,col6=st.columns(3)
 
     with col4:
-        st.metric(label='Total Sale Value(Last 3 Months)',value='--')
+        st.metric(label='Total Sale Value(Last 10 Months)',value=total_sales())
     with col5:
-        st.metric(label='Total Restock value(Last 3 months)',value='--')
+        st.metric(label='Total Restock value(Last 10 months)',value=total_restock())
     with col6:
-        st.metric(label='Below Reorder and no pending Reorders',value='--')
+        st.metric(label='Low Stock Quantity & no Restock order is placed',value=low_stock())
 
     st.header('Suppliers Contact Details')
     # code

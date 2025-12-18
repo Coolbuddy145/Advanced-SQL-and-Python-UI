@@ -35,3 +35,31 @@ def total_categories():
     query3="SELECT COUNT(DISTINCT category) AS toal_categories FROM products"
     df3=pd.read_sql(query3,engine)
     return int(df3['toal_categories'].iloc[0])
+
+
+def total_sales():
+    query3="""SELECT ROUND(SUM(p.price*abs(s.change_quantity)),2) AS total_sales
+    FROM products as p
+    INNER JOIN stock as s
+    ON p.product_id=s.product_id
+    WHERE entry_date>=(SELECT DATE_SUB(MAX(entry_date),interval 10 month) from stock) and change_type='Sale'"""
+    df3=pd.read_sql(query3,engine)
+    return int(df3['total_sales'].iloc[0])
+
+def total_restock():
+    query3="""SELECT ROUND(SUM(p.price*abs(s.change_quantity)),2) AS total_restock
+    FROM products as p
+    INNER JOIN stock as s
+    ON p.product_id=s.product_id
+    WHERE entry_date>=(SELECT DATE_SUB(MAX(entry_date),interval 10 month) from stock) and change_type='Restock'"""
+    df3=pd.read_sql(query3,engine)
+    return int(df3['total_restock'].iloc[0])
+
+def low_stock():
+    query="""SELECT COUNT(DISTINCT p.product_id) as count_
+    FROM products as p
+    LEFT JOIN reorders as r
+    ON p.product_id=r.product_id
+    WHERE P.stock_quantity<p.reorder_level AND r.product_id IS NULL"""
+    df=pd.read_sql(query,engine)
+    return int(df['count_'].iloc[0])
