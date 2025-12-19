@@ -63,3 +63,21 @@ def low_stock():
     WHERE P.stock_quantity<p.reorder_level AND r.product_id IS NULL"""
     df=pd.read_sql(query,engine)
     return int(df['count_'].iloc[0])
+
+def supplier_details():
+    query="SELECT supplier_name,contact_name,email,phone FROM suppliers"
+    return pd.read_sql(query,engine)
+
+def product_suppliers():
+    query="""SELECT p.product_name,s.supplier_name,p.stock_quantity,p.reorder_level
+        FROM products as p
+        INNER JOIN suppliers as s
+        ON p.supplier_id=s.supplier_id"""
+    return pd.read_sql(query,engine)
+
+def products_reorder():
+    query="""SELECT product_name,stock_quantity,reorder_level
+        FROM products 
+        WHERE stock_quantity<reorder_level
+    """
+    return pd.read_sql(query,engine)

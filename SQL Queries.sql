@@ -38,6 +38,16 @@ LEFT JOIN reorders as r
 ON p.product_id=r.product_id
 WHERE P.stock_quantity<p.reorder_level AND r.product_id IS NULL
 
+# Suppliers Contact Details
+SELECT supplier_name,contact_name,email,phone FROM suppliers
+
+# Products with Supplier and Current Stock
+SELECT p.product_name,s.supplier_name,p.stock_quantity,p.reorder_level
+FROM products as p
+INNER JOIN suppliers as s
+ON p.supplier_id=s.supplier_id
+
+
 
 
 

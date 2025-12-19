@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock
+from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder
 
 # ----------------------------------------------------- Header ----------------------------------------------------------
 
@@ -32,10 +32,11 @@ if option=='Basic Operation':
         st.metric(label='Low Stock Quantity & no Restock order is placed',value=low_stock())
 
     st.header('Suppliers Contact Details')
-    # code
+    st.dataframe(supplier_details())
     st.header('Products with Supplier and Stock')
-    # code
+    st.dataframe(product_suppliers())
     st.header('Products Needing Reorder')
+    st.dataframe(products_reorder())
 
 # ------------------------------------------------- Operational Task Page -----------------------------------------
 
