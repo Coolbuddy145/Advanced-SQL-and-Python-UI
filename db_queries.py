@@ -17,6 +17,11 @@ with engine.connect() as conn:
     conn.execute(text("SELECT 1"))
     print("✅ Connected successfully")
 
+# helper function created
+def sql(query, params=None):
+    with engine.connect() as conn:
+        result = conn.execute(text(query), params or {})
+        return pd.DataFrame(result.mappings().all())
 
 # creating functions for each metric
 
@@ -81,3 +86,17 @@ def products_reorder():
         WHERE stock_quantity<reorder_level
     """
     return pd.read_sql(query,engine)
+
+def get_products():
+    return sql("""SELECT product_id,product_name FROM products ORDER BY product_name""")
+
+# def product_selector(get_products):
+#     option_selected=st.selectbox("Choose a Product",options=get_products['product_id'],format_func=lambda x:get_products.loc[get_products['product_id']==x,'product_name'].values[0])
+#     return option_selected
+def get_prod_hist(option_selected):
+    return sql("""SELECT p.product_name,s.change_quantity,s.change_type,s.entry_date
+                FROM products as p
+                INNER JOIN stock as s
+                ON p.product_id=s.product_id
+                WHERE p.product_id= :pid
+                ORDER BY s.entry_date DESC""",{'pid':option_selected})

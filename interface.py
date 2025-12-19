@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder
+from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder,sql,get_products,get_prod_hist
 
 # ----------------------------------------------------- Header ----------------------------------------------------------
 
@@ -48,7 +48,7 @@ elif option=='Operational Tasks':
     # creating functions for each operation
 
     if option_1=='Add a New Product':
-        st.header('form1')
+        st.header('Add Product')
         with st.form('Add New Product'):
             prod_name=st.text_input('Enter Product Name')
             prod_category=st.text_input('Enter Product Category')
@@ -62,8 +62,13 @@ elif option=='Operational Tasks':
     elif option_1=='Product History':
         st.header('Product Inventory History')
         with st.form('form2'):
-            prod_name2=st.text_input('Choose Product Name')
+            products_df=get_products()
+            option_selected=st.selectbox("Choose a Product",options=products_df['product_id'],format_func=lambda x:products_df.loc[products_df['product_id']==x,'product_name'].values[0])
             submit2=st.form_submit_button('Get Details')
+            if submit2:
+                history=get_prod_hist(option_selected)
+                st.dataframe(history)
+            
 
     elif option_1=='Place Reorder':
         st.header('Place Reorder')
