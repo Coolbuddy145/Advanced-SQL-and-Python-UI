@@ -22,11 +22,20 @@ DB_USER = os.environ.get("DB_USER")
 DB_PASS = os.environ.get("DB_PASS")
 DB_NAME = os.environ.get("DB_NAME")
 
+# engine = create_engine(
+#     f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+#     future=True,
+#     pool_pre_ping=True
+# )
 engine = create_engine(
     f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+    pool_pre_ping=True,
     future=True,
-    pool_pre_ping=True
+    connect_args={
+        "ssl": {"ssl_mode": "REQUIRED"}
+    }
 )
+
 
 
 
