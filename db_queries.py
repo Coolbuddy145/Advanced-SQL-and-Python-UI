@@ -119,3 +119,12 @@ def call_sp(product_name,category,price,stock,reorder_level,supplier_id):
     
     with engine.begin() as conn:
         conn.execute(query,para)
+
+def reorder(product_id,quantity):
+    query=text("""INSERT INTO reorders(reorder_id,product_id,reorder_quantity,reorder_date,status)
+            SELECT MAX(reorder_id)+1,:pid,:qty,CURDATE(),"Ordered" FROM reorders""")
+    para={'pid':product_id,
+          'qty':quantity}
+    
+    with engine.begin() as conn:
+        conn.execute(query,para)

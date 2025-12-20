@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder,sql,get_products,get_prod_hist,get_cat,get_sup,call_sp
+from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder,sql,get_products,get_prod_hist,get_cat,get_sup,call_sp,reorder
 
 # ----------------------------------------------------- Header ----------------------------------------------------------
 
@@ -80,9 +80,16 @@ elif option=='Operational Tasks':
     elif option_1=='Place Reorder':
         st.header('Place Reorder')
         with st.form('form3'):
-            prod_name3=st.text_input('Choose Product Name')
-            prod_quant=st.number_input('Enter Quantity')
+            prod_namee=get_products()
+            prod_id=st.selectbox('Choose Product',options=prod_namee['product_id'],format_func=lambda x:prod_namee.loc[prod_namee['product_id']==x,'product_name'].values[0])
+            prod_quant=st.number_input('Enter Quantity',min_value=1,step=1)
             submit3=st.form_submit_button('Place Reorder')
+            if submit3:
+                try:
+                    reorder(prod_id,prod_quant)
+                    st.success('✅ Product reordered successfully')
+                except Exception as e:
+                    st.error(f"❌ Failed to reorder product: {e}")
 
     elif option_1=='Recieve Order':
         pass
