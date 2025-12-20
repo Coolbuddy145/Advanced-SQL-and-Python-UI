@@ -1,17 +1,34 @@
 import pandas as pd
 import streamlit as st
-from sqlalchemy import create_engine,text
+# from sqlalchemy import create_engine,text
 
 # creating db engine
-from sqlalchemy import create_engine, text
-from urllib.parse import quote_plus
+# from sqlalchemy import create_engine, text
+# from urllib.parse import quote_plus
 
-password = quote_plus("Pikachu@123")
+# password = quote_plus("Pikachu@123")
+
+# engine = create_engine(
+#     f"mysql+pymysql://root:{password}@localhost:3306/sql_db",
+#     echo=True
+# )
+
+import os
+from sqlalchemy import create_engine, text
+
+DB_HOST = os.environ.get("DB_HOST")
+DB_PORT = os.environ.get("DB_PORT", "3306")
+DB_USER = os.environ.get("DB_USER")
+DB_PASS = os.environ.get("DB_PASS")
+DB_NAME = os.environ.get("DB_NAME")
 
 engine = create_engine(
-    f"mysql+pymysql://root:{password}@localhost:3306/sql_db",
-    echo=True
+    f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+    future=True,
+    pool_pre_ping=True
 )
+
+
 
 with engine.connect() as conn:
     conn.execute(text("SELECT 1"))
@@ -65,7 +82,7 @@ def low_stock():
     FROM products as p
     LEFT JOIN reorders as r
     ON p.product_id=r.product_id
-    WHERE P.stock_quantity<p.reorder_level AND r.product_id IS NULL"""
+    WHERE p.stock_quantity<p.reorder_level AND r.product_id IS NULL"""
     df=pd.read_sql(query,engine)
     return int(df['count_'].iloc[0])
 

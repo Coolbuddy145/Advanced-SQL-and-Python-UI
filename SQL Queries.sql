@@ -109,6 +109,8 @@ SELECT DISTINCT category FROM products
 # supplier id and name
 SELECT supplier_id,supplier_name FROM suppliers
 
+SELECT * FROM products where product_name='Carrom Board'
+
 
 
 
