@@ -61,3 +61,27 @@ The UI abstracts database complexity, making the system usable even by non-techn
 
 ## 🧠 Architecture
 
+---
+## 📁 Project Structure
+
+---
+
+## 🎯 Why This Project Matters
+
+This project mirrors **real-world internal business tools**, showcasing:
+- Backend–database integration
+- Advanced SQL in production use
+- Secure cloud deployment
+- Clean separation of UI and business logic
+
+It demonstrates skills in **data engineering, backend development, SQL optimization, and cloud deployment**.
+
+---
+
+## 👤 Author
+**Zaid Khan**  
+*(Add LinkedIn / Portfolio link)*
+
+
+
+
