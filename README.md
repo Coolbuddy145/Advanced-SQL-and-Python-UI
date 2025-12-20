@@ -1,64 +1,48 @@
 # 📦 Inventory & Supply Chain Management Dashboard
 
-A full-stack **Inventory and Supply Chain Management system** built using **Python, Advanced SQL, Streamlit, and MySQL**, where complex database operations are seamlessly abstracted behind an intuitive UI.
+A **production-style full-stack inventory management system** built with **Python, Advanced SQL, Streamlit, and MySQL**, where complex database operations are performed seamlessly through an intuitive UI.
 
-🔗 **Live App:** *(Add your Streamlit Cloud link here)*  
+🔗 **Live App:** *(Add Streamlit Cloud link)*  
 🗄️ **Database:** MySQL (Hosted on Railway)
 
 ---
 
-## 🚀 Project Overview
+## 🚀 Overview
 
-This project demonstrates how a **non-technical user** can perform **complex database operations**—such as adding products, tracking inventory history, and placing reorders—**without writing a single SQL query**, all through a clean and interactive web interface.
+This project enables users to manage inventory, suppliers, and reorders **without writing SQL**, while internally executing **advanced database logic** such as stored procedures, joins, aggregations, and transactional operations.
 
-Behind the scenes, the system uses:
-- Advanced SQL queries
-- Stored Procedures
-- Transactional database logic
-- Secure cloud deployment
+The UI abstracts database complexity, making the system usable even by non-technical users.
 
 ---
 
 ## ✨ Key Highlights
 
-### 🔹 Fully Integrated UI & Database
-- Users can **add products**, **view inventory history**, and **place reorders** directly from the UI  
-- No SQL knowledge required to operate the system  
-- UI actions are mapped to real database transactions  
+- 🔗 **Tightly Integrated UI & Database**  
+  Perform real database operations directly from the UI — no SQL knowledge required.
 
-### 🔹 Advanced SQL Usage
-- Stored Procedures for atomic operations (e.g. product creation)
-- Complex joins, aggregations, and subqueries
-- Inventory stock derived from transaction history
-- Parameterized queries to prevent SQL injection
+- 🧠 **Advanced SQL Implementation**  
+  Stored procedures, complex joins, subqueries, aggregations, and parameterized queries.
 
-### 🔹 Cloud Deployment (Production-Style)
-- **Database deployed on Railway (MySQL)**
-- **Frontend deployed on Streamlit Cloud**
-- Secure credential management using **Streamlit Secrets**
-- No credentials hard-coded in the codebase
+- ☁️ **Cloud-Deployed Architecture**  
+  MySQL hosted on **Railway**, UI deployed on **Streamlit Cloud**, securely connected via environment secrets.
+
+- 🔐 **Production-Grade Security**  
+  No credentials in code or GitHub. All secrets managed via Streamlit Secrets.
 
 ---
 
 ## 🧩 Features
 
-### 📊 Business Metrics Dashboard
-- Total Suppliers  
-- Total Products  
-- Total Categories  
-- Sales & Restock Value (Last 10 Months)  
-- Low Stock Alerts (No active reorder)  
-
-### 🏭 Supplier & Inventory Views
-- Supplier contact details  
-- Products mapped with suppliers  
-- Products below reorder level  
+### 📊 Dashboard Metrics
+- Total suppliers, products, categories  
+- Sales & restock value (last 10 months)  
+- Low-stock alerts (no active reorder)
 
 ### ⚙️ Operational Capabilities
-- ➕ Add new products (via Stored Procedure)  
+- ➕ Add new products (via stored procedure)  
 - 📜 View complete product inventory history  
 - 🔄 Place product reorders  
-- Real-time database updates reflected in UI  
+- Real-time DB updates reflected in UI  
 
 ---
 
@@ -69,12 +53,11 @@ Behind the scenes, the system uses:
 | Frontend | Streamlit |
 | Backend | Python |
 | Database | MySQL |
-| ORM / DB Access | SQLAlchemy |
-| Cloud DB Hosting | Railway |
-| App Hosting | Streamlit Cloud |
-| Security | Environment Variables & Secrets |
+| DB Access | SQLAlchemy |
+| Cloud DB | Railway |
+| Hosting | Streamlit Cloud |
 
 ---
 
-## 🗂️ Project Structure
+## 🧠 Architecture
 
