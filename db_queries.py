@@ -30,9 +30,9 @@ engine = create_engine(
 
 
 
-with engine.connect() as conn:
-    conn.execute(text("SELECT 1"))
-    print("✅ Connected successfully")
+# with engine.connect() as conn:
+#     conn.execute(text("SELECT 1"))
+#     print("✅ Connected successfully")
 
 # helper function created
 def sql(query, params=None):
