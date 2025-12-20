@@ -43,7 +43,7 @@ if option=='Basic Operation':
 elif option=='Operational Tasks':
     st.title('Inventory and Supply Chain Management')
     st.header('Operational Tasks')
-    option_1=st.selectbox('Choose a Task',['Add a New Product','Product History','Place Reorder','Recieve Order'])
+    option_1=st.selectbox('Choose a Task',['Add a New Product','Product History','Place Reorder'])
 
     # creating functions for each operation
 
@@ -90,9 +90,6 @@ elif option=='Operational Tasks':
                     st.success('✅ Product reordered successfully')
                 except Exception as e:
                     st.error(f"❌ Failed to reorder product: {e}")
-
-    elif option_1=='Recieve Order':
-        pass
 
             
 
