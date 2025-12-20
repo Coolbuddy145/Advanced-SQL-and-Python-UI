@@ -1,15 +1,17 @@
+![Project Snapshot](https://github.com/Coolbuddy145/Advanced-SQL-and-Python-UI/blob/40099519a031ee674967ab9fd4c90afac34de6d2/snapshot.png)
+
 # 📦 Inventory & Supply Chain Management Dashboard
 
-A **production-style full-stack inventory management system** built with **Python, Advanced SQL, Streamlit, and MySQL**, where complex database operations are performed seamlessly through an intuitive UI.
+A **production-style full-stack inventory management system** built using **Python, Advanced SQL, Streamlit, and MySQL**, where complex database operations are seamlessly executed through an intuitive UI.
 
-🔗 **Live App:** *(Add Streamlit Cloud link)*  
+🔗 **Live App:** *(Add your Streamlit Cloud link here)*  
 🗄️ **Database:** MySQL (Hosted on Railway)
 
 ---
 
 ## 🚀 Overview
 
-This project enables users to manage inventory, suppliers, and reorders **without writing SQL**, while internally executing **advanced database logic** such as stored procedures, joins, aggregations, and transactional operations.
+This project allows users to manage inventory, suppliers, and reorders **without writing SQL**, while internally leveraging **advanced database logic** such as stored procedures, complex joins, aggregations, and transactional operations.
 
 The UI abstracts database complexity, making the system usable even by non-technical users.
 
@@ -42,14 +44,14 @@ The UI abstracts database complexity, making the system usable even by non-techn
 - ➕ Add new products (via stored procedure)  
 - 📜 View complete product inventory history  
 - 🔄 Place product reorders  
-- Real-time DB updates reflected in UI  
+- Real-time database updates reflected in UI  
 
 ---
 
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
-|-----|-----------|
+|------|-----------|
 | Frontend | Streamlit |
 | Backend | Python |
 | Database | MySQL |
@@ -60,28 +62,4 @@ The UI abstracts database complexity, making the system usable even by non-techn
 ---
 
 ## 🧠 Architecture
-
----
-## 📁 Project Structure
-
----
-
-## 🎯 Why This Project Matters
-
-This project mirrors **real-world internal business tools**, showcasing:
-- Backend–database integration
-- Advanced SQL in production use
-- Secure cloud deployment
-- Clean separation of UI and business logic
-
-It demonstrates skills in **data engineering, backend development, SQL optimization, and cloud deployment**.
-
----
-
-## 👤 Author
-**Zaid Khan**  
-*(Add LinkedIn / Portfolio link)*
-
-
-
 
