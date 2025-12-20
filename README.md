@@ -63,3 +63,35 @@ The UI abstracts database complexity, making the system usable even by non-techn
 
 ## 🧠 Architecture
 
+---
+
+## 📁 Project Structure
+
+├── app.py # Streamlit UI
+├── db_queries.py # SQL & DB logic
+├── SQL Queries.sql # Schema & stored procedures
+├── requirements.txt
+└── README.md
+
+
+---
+
+## 🎯 Why This Project Matters
+
+This project mirrors **real-world internal business tools**, demonstrating:
+- End-to-end UI–database integration  
+- Advanced SQL usage in production scenarios  
+- Secure cloud deployment practices  
+- Clean separation of UI, logic, and data layers  
+
+It showcases skills in **data engineering, backend development, SQL optimization, and cloud deployment**.
+
+---
+
+## 👤 Author
+
+**Zaid Khan**  
+*(Add LinkedIn / Portfolio link here)*
+
+
+
