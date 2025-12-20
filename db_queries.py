@@ -100,3 +100,22 @@ def get_prod_hist(option_selected):
                 ON p.product_id=s.product_id
                 WHERE p.product_id= :pid
                 ORDER BY s.entry_date DESC""",{'pid':option_selected})
+
+def get_cat():
+    return sql("SELECT DISTINCT category FROM products")
+
+def get_sup():
+    return sql("SELECT supplier_id,supplier_name FROM suppliers")
+
+def call_sp(product_name,category,price,stock,reorder_level,supplier_id):
+    query=text("""CALL prod_add(:p_name,:p_category,:p_price,:p_stock,:p_reorder,:p_supplier)""")
+    # here we have to pass values using place holder in stored procedure such as using :p_name and then the value gets passed in it.
+    para={'p_name':product_name,
+          'p_category':category,
+          'p_price':price,
+          'p_stock':stock,
+          'p_reorder':reorder_level,
+          'p_supplier':supplier_id}
+    
+    with engine.begin() as conn:
+        conn.execute(query,para)

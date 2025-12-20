@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder,sql,get_products,get_prod_hist
+from db_queries import total_supplier,total_products,total_categories,total_sales,total_restock,low_stock,supplier_details,product_suppliers,products_reorder,sql,get_products,get_prod_hist,get_cat,get_sup,call_sp
 
 # ----------------------------------------------------- Header ----------------------------------------------------------
 
@@ -50,14 +50,21 @@ elif option=='Operational Tasks':
     if option_1=='Add a New Product':
         st.header('Add Product')
         with st.form('Add New Product'):
-            prod_name=st.text_input('Enter Product Name')
-            prod_category=st.text_input('Enter Product Category')
-            prod_price=st.text_input('Price')
-            prod_stock=st.text_input('Stock Quantity')
-            reorder_level=st.text_input('Reorder Level')
-            prod_supplier=st.text_input('Supplier')
-
+            product_name=st.text_input('Enter Product Name')
+            category=st.selectbox('Category',options=get_cat())
+            price=st.number_input('Price',min_value=0.0)
+            stock=st.number_input('Stock Quantity',min_value=0,step=1)
+            reorder_level=st.number_input('Reorder Level',min_value=0,step=1)
+            sup_name=get_sup()
+            supplier_id=st.selectbox('Supplier',options=sup_name['supplier_id'],format_func=lambda x:sup_name.loc[sup_name['supplier_id']==x,'supplier_name'].values[0])
             submit1=st.form_submit_button('Add Product')
+            if submit1:
+                try:
+                    call_sp(product_name,category,price,stock,reorder_level,supplier_id)
+                    st.success("✅ Product added successfully")
+                except Exception as e:
+                    st.error(f"❌ Failed to add product: {e}")
+
 
     elif option_1=='Product History':
         st.header('Product Inventory History')
