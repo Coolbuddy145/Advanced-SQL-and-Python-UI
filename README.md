@@ -4,7 +4,7 @@
 
 A **production-style full-stack inventory management system** built using **Python, Advanced SQL, Streamlit, and MySQL**, where complex database operations are seamlessly executed through an intuitive UI.
 
-🔗 **Live App:** *(Add your Streamlit Cloud link here)*  
+🔗 **Live App:** *https://coolbuddy145-advanced-sql-and-python-ui-app-jffegv.streamlit.app/*  
 🗄️ **Database:** MySQL (Hosted on Railway)
 
 ---
@@ -68,9 +68,13 @@ The UI abstracts database complexity, making the system usable even by non-techn
 ## 📁 Project Structure
 
 ├── app.py # Streamlit UI
+
 ├── db_queries.py # SQL & DB logic
+
 ├── SQL Queries.sql # Schema & stored procedures
+
 ├── requirements.txt
+
 └── README.md
 
 
@@ -91,7 +95,7 @@ It showcases skills in **data engineering, backend development, SQL optimization
 ## 👤 Author
 
 **Zaid Khan**  
-*(Add LinkedIn / Portfolio link here)*
+
 
 
 
